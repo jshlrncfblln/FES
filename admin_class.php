@@ -154,7 +154,7 @@ class Action
 	{
 		extract($_POST);
 		$data = "";
-		$type = array("", "users", "faculty_list", "student_list");
+		$type = aarray("", "users", "faculty_list", "student_list", "program_head_list", "dean_list", "registrar_list");
 		foreach ($_POST as $k => $v) {
 			if (!in_array($k, array('id', 'cpass', 'table', 'password')) && !is_numeric($k)) {
 
@@ -471,6 +471,10 @@ class Action
 			return 1;
 		}
 	}
+
+
+
+
 	function save_faculty()
 	{
 		extract($_POST);
@@ -519,6 +523,172 @@ class Action
 		if ($delete)
 			return 1;
 	}
+
+
+
+	//registrar
+	function save_registrar()
+	{
+		extract($_POST);
+		$data = "";
+		foreach ($_POST as $k => $v) {
+			if (!in_array($k, array('id', 'cpass', 'password')) && !is_numeric($k)) {
+				if (empty($data)) {
+					$data .= " $k='$v' ";
+				} else {
+					$data .= ", $k='$v' ";
+				}
+			}
+		}
+		if (!empty($password)) {
+			$data .= ", password=md5('$password') ";
+		}
+		$check = $this->db->query("SELECT * FROM registrar_list where email ='$email' " . (!empty($id) ? " and id != {$id} " : ''))->num_rows;
+		if ($check > 0) {
+			return 2;
+			exit;
+		}
+		$check = $this->db->query("SELECT * FROM registrar_list where school_id ='$school_id' " . (!empty($id) ? " and id != {$id} " : ''))->num_rows;
+		if ($check > 0) {
+			return 3;
+			exit;
+		}
+		if (isset($_FILES['img']) && $_FILES['img']['tmp_name'] != '') {
+			$fname = strtotime(date('y-m-d H:i')) . '_' . $_FILES['img']['name'];
+			$move = move_uploaded_file($_FILES['img']['tmp_name'], 'assets/uploads/' . $fname);
+			$data .= ", avatar = '$fname' ";
+		}
+		if (empty($id)) {
+			$save = $this->db->query("INSERT INTO registrar_list set $data");
+		} else {
+			$save = $this->db->query("UPDATE registrar_list set $data where id = $id");
+		}
+
+		if ($save) {
+			return 1;
+		}
+	}
+	function delete_registrar()
+	{
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM registrar_list where id = " . $id);
+		if ($delete)
+			return 1;
+	}
+
+
+
+	function save_dean()
+    {
+        extract($_POST);
+        $data = "";
+        foreach ($_POST as $k => $v) {
+            if (!in_array($k, array('id', 'cpass', 'password')) && !is_numeric($k)) {
+                if (empty($data)) {
+                    $data .= " $k='$v' ";
+                } else {
+                    $data .= ", $k='$v' ";
+                }
+            }
+        }
+        if (!empty($password)) {
+            $data .= ", password=md5('$password') ";
+        }
+        $check = $this->db->query("SELECT * FROM dean_list where email ='$email' " . (!empty($id) ? " and id != {$id} " : ''))->num_rows;
+        if ($check > 0) {
+            return 2;
+            exit;
+        }
+        $check = $this->db->query("SELECT * FROM dean_list where school_id ='$school_id' " . (!empty($id) ? " and id != {$id} " : ''))->num_rows;
+        if ($check > 0) {
+            return 3;
+            exit;
+        }
+        if (isset($_FILES['img']) && $_FILES['img']['tmp_name'] != '') {
+            $fname = strtotime(date('y-m-d H:i')) . '_' . $_FILES['img']['name'];
+            $move = move_uploaded_file($_FILES['img']['tmp_name'], 'assets/uploads/' . $fname);
+            $data .= ", avatar = '$fname' ";
+        }
+        if (empty($id)) {
+            $save = $this->db->query("INSERT INTO dean_list set $data");
+        } else {
+            $save = $this->db->query("UPDATE dean_list set $data where id = $id");
+        }
+
+        if ($save) {
+            return 1;
+        }
+    }
+    function delete_dean()
+    {
+        extract($_POST);
+        $delete = $this->db->query("DELETE FROM dean_list where id = " . $id);
+        if ($delete)
+            return 1;
+    }
+
+
+
+
+
+//program_head
+function save_program_head()
+{
+	extract($_POST);
+	$data = "";
+	foreach ($_POST as $k => $v) {
+		if (!in_array($k, array('id', 'cpass', 'password')) && !is_numeric($k)) {
+			if (empty($data)) {
+				$data .= " $k='$v' ";
+			} else {
+				$data .= ", $k='$v' ";
+			}
+		}
+	}
+	if (!empty($password)) {
+		$data .= ", password=md5('$password') ";
+	}
+	$check = $this->db->query("SELECT * FROM program_head_list where email ='$email' " . (!empty($id) ? " and id != {$id} " : ''))->num_rows;
+	if ($check > 0) {
+		return 2;
+		exit;
+	}
+	$check = $this->db->query("SELECT * FROM program_head_list where school_id ='$school_id' " . (!empty($id) ? " and id != {$id} " : ''))->num_rows;
+	if ($check > 0) {
+		return 3;
+		exit;
+	}
+	if (isset($_FILES['img']) && $_FILES['img']['tmp_name'] != '') {
+		$fname = strtotime(date('y-m-d H:i')) . '_' . $_FILES['img']['name'];
+		$move = move_uploaded_file($_FILES['img']['tmp_name'], 'assets/uploads/' . $fname);
+		$data .= ", avatar = '$fname' ";
+	}
+	if (empty($id)) {
+		$save = $this->db->query("INSERT INTO program_head_list set $data");
+	} else {
+		$save = $this->db->query("UPDATE program_head_list set $data where id = $id");
+	}
+
+	if ($save) {
+		return 1;
+	}
+}
+function delete_program_head()
+{
+	extract($_POST);
+	$delete = $this->db->query("DELETE FROM program_head_list where id = " . $id);
+	if ($delete)
+		return 1;
+}
+
+
+
+
+
+
+
+
+
 	function save_student()
 	{
 		extract($_POST);

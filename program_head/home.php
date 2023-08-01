@@ -24,27 +24,18 @@ $astat = array("Not Yet Started", "On-going", "Closed");
 
       <div class="col-md-5">
         <div class="callout callout-info" style="border-left-color: #f74780;">
-          <h5><b>Academic Year: <?php echo $_SESSION['academic']['year'] . ' ' . (ordinal_suffix1($_SESSION['academic']['semester'])) ?> Semester</b></h5>
-          <h6><b>Evaluation Status: <?php echo $astat[$_SESSION['academic']['status']] ?></b></h6>
+          <h5>Academic Year: <?php echo $_SESSION['academic']['year'] . ' <br> Semester: ' . (ordinal_suffix1($_SESSION['academic']['semester'])) ?> Semester</h5>
+          <h6>Evaluation Status: <?php echo $astat[$_SESSION['academic']['status']] ?></h6>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="small-box bg-light shadow-sm border">
-      <div class="inner">
-        <h3><?php echo $conn->query("SELECT * FROM faculty_list ")->num_rows; ?></h3>
 
-        <p>Total Faculties</p>
-      </div>
-      <div class="icon">
-        <i class="fa fa-user-friends"></i>
-      </div>
-    </div>
-  </div>
-  <div class="col-12 col-sm-6 col-md-4">
+
+<div class="row">
+
+<div class="col-12 col-sm-6 col-md-3">
     <div class="small-box bg-light shadow-sm border">
       <div class="inner">
         <h3><?php echo $conn->query("SELECT * FROM student_list")->num_rows; ?></h3>
@@ -56,19 +47,23 @@ $astat = array("Not Yet Started", "On-going", "Closed");
       </div>
     </div>
   </div>
-  <div class="col-12 col-sm-6 col-md-4">
+
+
+  <div class="col-12 col-sm-6 col-md-3">
     <div class="small-box bg-light shadow-sm border">
       <div class="inner">
-        <h3><?php echo $conn->query("SELECT * FROM users")->num_rows; ?></h3>
+        <h3><?php echo $conn->query("SELECT * FROM program_head_list ")->num_rows; ?></h3>
 
-        <p>Total Users</p>
+        <p>Total Program Heads</p>
       </div>
       <div class="icon">
-        <i class="fa fa-users"></i>
+        <i class="fa fa-user-friends"></i>
       </div>
     </div>
   </div>
-  <div class="col-12 col-sm-6 col-md-4">
+
+  
+  <div class="col-12 col-sm-6 col-md-3">
     <div class="small-box bg-light shadow-sm border">
       <div class="inner">
         <h3><?php echo $conn->query("SELECT * FROM class_list")->num_rows; ?></h3>

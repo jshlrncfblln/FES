@@ -61,9 +61,10 @@ if (isset($_SESSION['login_id']))
           <div class="input-group mb-3">
             <input type="password" class="form-control" name="password" required placeholder="Password">
             <div class="input-group-append">
-              <div class="input-group-text">
-             
-              </div>
+            <div class="input-group-text">
+                
+                </div>
+            
             </div>
           </div>
           <div class="form-group mb-3">

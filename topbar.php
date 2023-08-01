@@ -29,9 +29,9 @@
         <a class="nav-link" data-toggle="dropdown" aria-expanded="true" href="javascript:void(0)">
           <span>
             <div class="d-felx badge-pill">
-              <span class=""><img src="assets/uploads/<?php echo $_SESSION['login_avatar'] ?>" alt="" class="user-img border "></span>
-              <span><b><?php echo ucwords($_SESSION['login_firstname']) ?></b></span>
-              <span class="fa fa-angle-down ml-2"></span>
+        
+              <p style="color: white;"><b><?php echo ucwords($_SESSION['login_firstname']) ?><?php echo " "?><?php echo ucwords($_SESSION['login_lastname']) ?></b>
+              <span class="fa fa-angle-down ml-2"></span></p>
             </div>
           </span>
         </a>

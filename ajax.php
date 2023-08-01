@@ -129,6 +129,36 @@ if ($action == 'delete_faculty') {
 	if ($save)
 		echo $save;
 }
+if ($action == 'save_registrar') {
+	$save = $crud->save_registrar();
+	if ($save)
+		echo $save;
+}
+if ($action == 'delete_registrar') {
+	$save = $crud->delete_registrar();
+	if ($save)
+		echo $save;
+}
+if ($action == 'save_program_head') {
+    $save = $crud->save_program_head();
+    if ($save)
+        echo $save;
+}
+if ($action == 'delete_program_head') {
+    $save = $crud->delete_program_head();
+    if ($save)
+        echo $save;
+}
+if ($action == 'save_dean') {
+    $save = $crud->save_dean();
+    if ($save)
+        echo $save;
+}
+if ($action == 'delete_dean') {
+    $save = $crud->delete_dean();
+    if ($save)
+        echo $save;
+}
 if ($action == 'save_student') {
 	$save = $crud->save_student();
 	if ($save)
@@ -149,7 +179,6 @@ if ($action == 'save_evaluation') {
 	if ($save)
 		echo $save;
 }
-
 if ($action == 'get_class') {
 	$get = $crud->get_class();
 	if ($get)
