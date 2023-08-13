@@ -69,6 +69,21 @@
 
                     <!-- MAIN FORM FOR THE EVALUATION -->
                     <form id="manage-evaluation">
+                    <div class="fixed inset-0 flex items-center justify-center z-50 hidden" id="alertModal">
+                        <!-- Modal Overlay with Background Color and Opacity -->
+                        <div class="absolute inset-0 bg-gray-100 opacity-75"></div>
+
+                        <!-- Modal Content -->
+                        <div class="bg-white p-8 rounded shadow-md w-1/3 relative">
+                            <div class="mb-4">
+                                <h3 class="text-lg font-semibold">Alert</h3>
+                            </div>
+                            <p class="text-gray-700">Please answer all questions before proceeding.</p>
+                            <div class="mt-6 flex justify-end">
+                                <button type="button" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400" id="closeAlertBtn">Close</button>
+                            </div>
+                        </div>
+                    </div>
                         <!-- ... Your existing hidden input fields ... -->
                         <input type="hidden" name="class_id" value="<?php echo $_SESSION['login_class_id'] ?>">
 						<input type="hidden" name="faculty_id" value="<?php echo $faculty_id ?>">
@@ -104,7 +119,7 @@
                                         while ($row = $questions->fetch_assoc()) :
                                             $q_arr[$row['id']] = $row;
                                         ?>
-                                        <tr class="bg-white">
+                                        <tr class="bg-white question-row">
                                             <td class="p-1" width="40%">
                                                 <?php echo $row['question'] ?>
                                                 <input type="hidden" name="qid[]" value="<?php echo $row['id'] ?>">
@@ -128,8 +143,9 @@
 
                         <!-- NAVIGATION BUTTONS -->
                         <div class="flex space-x-2 mt-4">
-                            <button type="button" class="px-4 py-2 rounded-full bg-gradient-primary text-white" id="nextStepBtn">Next Step</button>
-                            <button type="button" class="px-4 py-2 rounded-full bg-gradient-primary text-white hidden" id="prevStepBtn" style="display: none;">Previous</button>
+                            <button type="button" class="px-4 py-2 rounded-full bg-pink-300 text-white text-base font-semibold hover:bg-pink-200" id="nextStepBtn">Next Step</button>
+                            <button type="button" class="px-4 py-2 rounded-full bg-pink-300 text-white text-base font-semibold hidden hover:bg-pink-200" id="submitBtn" style="display: none;">Submit</button>
+                            <button type="button" class="px-4 py-2 rounded-full bg-pink-300 text-white text-base font-semibold hidden hover:bg-pink-200" id="prevStepBtn" style="display: none;">Previous</button>
                         </div>
                         <!-- END OF NAVIGATION BUTTONS -->
                     </form>
@@ -161,6 +177,22 @@
 
         $('#nextStepBtn').on('click', function() {
             console.log("Next button clicked");
+
+            // Add your form validation logic here
+            var currentForm = formSteps.eq(currentStep);
+            var questionRows = currentForm.find('.question-row');
+
+            // Check if all questions have at least one checked radio button
+            var allQuestionsChecked = questionRows.toArray().every(function(row) {
+                return $(row).find('input[type="radio"]:checked').length > 0;
+            });
+
+            if (!allQuestionsChecked) {
+                $('#alertModal').removeClass('hidden'); // Show the modal
+                return;
+            }
+
+            // Rest of your existing code
             if (currentStep < maxStep) {
                 formSteps.eq(currentStep).hide();
                 currentStep++;
@@ -169,7 +201,15 @@
                 if (currentStep >= 1) {
                     prevButton.show();
                 }
+                if (currentStep === maxStep - 1) {
+                    $('#nextStepBtn').hide();
+                    $('#submitBtn').show();
+                }
             }
+        });
+
+        $('#closeAlertBtn').on('click', function() {
+            $('#alertModal').addClass('hidden'); // Hide the modal
         });
 
         $('#prevStepBtn').on('click', function() {
@@ -179,6 +219,10 @@
                 formSteps.eq(currentStep).show();
                 if (currentStep === 0) {
                     prevButton.hide();
+                }
+                if (currentStep < maxStep - 1) {
+                    $('#nextStepBtn').show();
+                    $('#submitBtn').hide();
                 }
             }
         });
