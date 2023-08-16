@@ -49,4 +49,8 @@
   <link rel="stylesheet" href="assets/plugins/summernote/summernote-bs4.min.css">
    <!-- Jquery-UI -->
   
+
+   <!-- tailwind css cdn link -->
+   <script src="https://cdn.tailwindcss.com"></script>
+  
 </head>

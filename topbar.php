@@ -7,12 +7,12 @@
     }
   </style>
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-primary navbar-dark" style="background-color: #f74780; color:">
+  <nav class="main-header navbar navbar-expand bg-[#FBA1B7] shadow-md">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <?php if (isset($_SESSION['login_id'])) : ?>
         <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="" role="button"><i class="fas fa-bars"></i></a>
+          <a class="nav-link" data-widget="pushmenu" href="" role="button"><i class="fas fa-bars text-white"></i></a>
         </li>
       <?php endif; ?>
       <li>
@@ -35,9 +35,9 @@
             </div>
           </span>
         </a>
-        <div class="dropdown-menu" aria-labelledby="account_settings" style="left: -2.5em;">
-          <a class="dropdown-item" href="javascript:void(0)" id="manage_account"><i class="fa fa-cog"></i> Manage Account</a>
-          <a class="dropdown-item" href="ajax.php?action=logout"><i class="fa fa-power-off"></i> Logout</a>
+        <div class="dropdown-menu p-2 font-base space-y-2" aria-labelledby="account_settings" style="left: -2.5em;">
+          <a class="dropdown-item hover:bg-rose-100" href="javascript:void(0)" id="manage_account"><i class="fa fa-cog"></i> Manage Account</a>
+          <a class="dropdown-item hover:bg-rose-100" href="ajax.php?action=logout"><i class="fa fa-power-off"></i> Logout</a>
         </div>
       </li>
     </ul>

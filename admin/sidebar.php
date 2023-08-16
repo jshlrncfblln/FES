@@ -6,7 +6,7 @@ font-weight: 1px;
 }
 
 .nav-pills .nav-link.active{
-background-color: lightgrey;
+background-color: #fecdd3;
 
 }
 
@@ -24,13 +24,13 @@ color:black;
       <p style="margin-top:70px;"></p>
       <div style="text-align: center; margin-bottom:-40px;">
       <img src="assets/img/logo.png" alt="ccsjdm logo" width="120px" height="120px">
-</div>
+    </div>
     </div>
     <div class="sidebar" >
-      <nav class="mt-2" style="color: #eb6d00;">
+      <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item dropdown">
-            <a href="index.php?page=home" class="nav-link nav-home">
+            <a href="index.php?page=home" class="nav-link nav-home hover:bg-rose-100">
               <i class="nav-icon fas fa-tachometer-alt" ></i>
                 <p class="fw-normal" style="color:black;">
                 Dashboard
@@ -38,7 +38,7 @@ color:black;
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a href="./index.php?page=subject_list" class="nav-link nav-subject_list">
+            <a href="./index.php?page=subject_list" class="nav-link nav-subject_list hover:bg-rose-100">
               <i class="nav-icon fas fa-th-list"></i>
               <p class="fw-normal" style="color:black;">
                 Subjects
@@ -46,7 +46,7 @@ color:black;
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a href="./index.php?page=class_list" class="nav-link nav-class_list">
+            <a href="./index.php?page=class_list" class="nav-link nav-class_list hover:bg-rose-100">
               <i class="nav-icon fas fa-list-alt"></i>
                 <p class="fw-normal" style="color:black;">
                 Classes
@@ -54,7 +54,7 @@ color:black;
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a href="./index.php?page=academic_list" class="nav-link nav-academic_list">
+            <a href="./index.php?page=academic_list" class="nav-link nav-academic_list hover:bg-rose-100">
               <i class="nav-icon fas fa-calendar"></i>
                 <p class="fw-normal" style="color:black;">
                 Academic Year
@@ -62,7 +62,7 @@ color:black;
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a href="./index.php?page=questionnaire" class="nav-link nav-questionnaire">
+            <a href="./index.php?page=questionnaire" class="nav-link nav-questionnaire hover:bg-rose-100">
               <i class="nav-icon fas fa-file-alt"></i>
                 <p class="fw-normal" style="color:black;">
                 Questionnaires
@@ -70,7 +70,7 @@ color:black;
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a href="./index.php?page=criteria_list" class="nav-link nav-criteria_list">
+            <a href="./index.php?page=criteria_list" class="nav-link nav-criteria_list hover:bg-rose-100">
               <i class="nav-icon fas fa-list-alt"></i>
                 <p class="fw-normal" style="color:black;">
                 Evaluation Criteria
@@ -80,7 +80,8 @@ color:black;
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link nav-edit_user">
+            <a href="./index.php?page=criteria_list" class="nav-link nav-criteria_list ">
+            <a href="#" class="nav-link nav-edit_user ">
             <i class="nav-icon fas fa-user-friends"></i>
                 <p class="fw-normal" style="color:black;">
                 Administrators
