@@ -2,7 +2,7 @@
 
 p{  
   color: black;
-font-weight: 1px;
+  font-weight: 1px;
 }
 
 .nav-pills .nav-link.active{
@@ -16,25 +16,31 @@ color:black;
 }
 
 </style>
-  <aside class="main-sidebar border" style="background-color:	white;">
+
+
+
+
+
+<aside class="main-sidebar border" style="background-color:	white;">
     <div class="dropdown">
-      <a href="index.php?page=home" class="brand-link">
-        <h3 class="text-center p-0 m-0" style="color: black;"><b>Admin Panel</b></h3>
-      </a>
-      <p style="margin-top:70px;"></p>
-      <div style="text-align: center; margin-bottom:-40px;">
-      <img src="assets/img/logo.png" alt="ccsjdm logo" width="120px" height="120px">
+      <div id="admin-panel-title">
+        <a href="index.php?page=home" class="brand-link">
+          <h3 class="text-center" style="color: black;"><b>Admin Panel</b></h3>
+        </a>
+      </div>
+
+      <div class="flex justify-center mt-12">
+        <img src="assets/img/logo.png" alt="ccsjdm logo" width="120px" height="120px">
+      </div>
     </div>
-    </div>
+
     <div class="sidebar" >
-      <nav class="mt-2">
+      <nav class="">
         <ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item dropdown">
             <a href="index.php?page=home" class="nav-link nav-home hover:bg-rose-100">
               <i class="nav-icon fas fa-tachometer-alt" ></i>
-                <p class="fw-normal" style="color:black;">
-                Dashboard
-              </p>
+                <p class="fw-normal" style="color:black;">Dashboard</p>
             </a>
           </li>
           <li class="nav-item dropdown">
@@ -235,7 +241,7 @@ color:black;
               <i class="nav-icon fas fa-list-alt"></i>
                 <p class="fw-normal" style="color:black;">
                 Faculty Report
-              </p>
+                </p>
             </a>
           </li>
 
@@ -245,7 +251,7 @@ color:black;
               <i class="nav-icon fas fa-list-alt"></i>
                 <p class="fw-normal" style="color:black;">
                 Departmental Report
-              </p>
+                </p>
             </a>
           </li>
 
@@ -255,7 +261,7 @@ color:black;
               <i class="nav-icon fas fa-list-alt"></i>
                 <p class="fw-normal" style="color:black;">
                 Overall Report
-              </p>
+                </p>
             </a>
           </li>
 
@@ -263,14 +269,17 @@ color:black;
                 
    
       <p style="margin-top: 50px; text-align: center; color: grey;">Copyright &copy; 2023 <a href="https://csjdm.gov.ph/government/departments/city-college-of-san-jose-del-monte/" target="_blank;" style="color:grey; "><br>City College of San Jose Del Monte</a>
-     <br> All rights reserved.
-</p>
-        </ul>
+      <br> All rights reserved.</p>
+      </ul>
       
     </div>
-  </aside>
+</aside>
   
-  <script>
+
+
+
+
+<script>
     $(document).ready(function() {
       var page = '<?php echo isset($_GET['page']) ? $_GET['page'] : 'home' ?>';
       var s = '<?php echo isset($_GET['s']) ? $_GET['s'] : '' ?>';
@@ -285,8 +294,7 @@ color:black;
         if ($('.nav-link.nav-' + page).hasClass('nav-is-tree') == true) {
           $('.nav-link.nav-' + page).parent().addClass('menu-open')
         }
-
       }
 
     })
-  </script>
+</script>
